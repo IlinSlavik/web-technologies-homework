@@ -16,6 +16,33 @@
     src: url(../static/fonts/Inter-Bold.woff2) format(woff2);
 }
 
+#contact
+{
+    background-image:url(../images/backgrounds/back.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#menu
+{
+    display: flex;
+    justify-content: left;
+    gap: 40px;
+    font-size: 18px;
+    font-weight: 500;
+    padding: 15px 0;
+    background-color: rgba(11, 171, 219, 0.801);
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+#menu span
+{
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
 p
 {
     font-size: 16px;
