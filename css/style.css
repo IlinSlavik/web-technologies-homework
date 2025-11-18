@@ -23,25 +23,26 @@
     background-size: cover;
 }
 
-#menu
+ul.menu
 {
-    display: flex;
-    justify-content: left;
-    gap: 40px;
-    font-size: 18px;
-    font-weight: 500;
-    padding: 15px 0;
-    background-color: rgba(11, 171, 219, 0.801);
-    border-radius: 8px;
-    margin-top: 20px;
+    padding: 0px 16px;
+    list-style: none;
+    background: #027a6e;
+    background: linear-gradient(0deg,rgba(2, 122, 110, 1) 0%, rgba(255, 255, 255, 1) 65%)
 }
 
-#menu span
+ul.menu li
 {
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-    transition: background-color 0.3s;
+    display: inline;
 }
+
+ul.menu li:after {
+  padding: 6px;
+  color: black;
+  content: ")\00a0";
+  font-size: 36px;
+}
+
 
 p
 {
