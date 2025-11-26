@@ -26,23 +26,23 @@
 ul.menu
 {
     padding: 0px 16px;
+    margin: 0;
     list-style: none;
-    background: #027a6e;
-    background: linear-gradient(0deg,rgba(2, 122, 110, 1) 0%, rgba(255, 255, 255, 1) 65%)
+    background: linear-gradient(0deg,rgb(2, 104, 122) 0%, rgba(255, 255, 255, 1) 75%);
 }
 
-ul.menu li
-{
-    display: inline;
-}
+.menu li {
+    display: inline-block;
+    padding: 6px 4px;
 
-ul.menu li:after {
-  padding: 6px;
-  color: black;
-  content: ")\00a0";
-  font-size: 36px;
-}
+    border-radius: 0 20px 20px 0;
+    border-right: 2px white solid;
+    box-shadow: 5px 0 2px -3px rgba(0, 0, 0, 1);
 
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+}
 
 p
 {
@@ -87,14 +87,13 @@ h4
 
 .send_button
 {
-    background: #5A98D0;
-    box-shadow: 5px 20px 50px rgba(16, 112, 177, 0.2);
+    background: linear-gradient(90deg,rgba(72, 118, 229, 1) 0%, rgba(141, 84, 233, 1) 100%);
     border-radius: 10px;
-    font-weight: 500;
+    width: 100px;
+    height:40px;
+    border: 0px;
     font-size: 16px;
-    line-height: 26px;
     text-align: center;
     color: #FFFFFF;
     text-transform: uppercase;
-
 }
