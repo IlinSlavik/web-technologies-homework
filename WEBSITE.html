@@ -12,12 +12,12 @@
 				<li>Contacts</li>
 			</ul>
 			<ul>
-				<li><img src="icons/phone.png" id="phone"></li>
+				<li><img src="icons/header_phone.png" id="phone"></li>
 				<li class="blue_text">+7 (707) 254 81 47</li>
 				<li class="blue_text">+7 (778) 395 90 26</li>
 			</ul>
 			<ul>
-				<li><img src="icons/mail.png" id="mail"></li>
+				<li><img src="icons/header_mail.png" id="mail"></li>
 				<li class="blue_text">thousanditcompany@gmail.com</li>
 			</ul>
 		</header>
@@ -31,24 +31,52 @@
 			<form>
 				Leave your contacts and we will call you back <br> within 30 minutes <br>
 				<div class="form_group">
-					<label for="phone">Phone number</label>
+					<label for="phone_form">Phone number</label>
 					<input 
 						type="tel"
-						id="phone"
-						pattern="\(\d{3}\) \d{3}-\d{2}-\d{2}">
+						id="phone_form"
+						placeholder="+7 (111) 111-11-11"
+						pattern="+7 \(\d{3}\) \d{3}-\d{2}-\d{2}">
 				</div>
 				<div class="form_group">
 					<label for="full_name">Full name</label>
 					<input 
 						type="text"
-						id="full_name">
+						id="full_name"
+						placeholder="Иванов Иван">
 				</div>
 				
 				<button id="consult_button">Get consultation</button>
 			</form>
+			<div id="background_photos">
+				<img class="back_photo" src="images/1.jpg">
+				<img id="big_back_photo" src="images/2.jpg">
+				<img class="back_photo" src="images/3.jpg">
+				<img class="back_photo" src="images/4.jpg">
+				<img class="back_photo" src="images/5.jpg">
+				<img class="back_photo" src="images/6.jpg">
+			</div>
 		</main>
 		<footer>
-
+			<h1>IT WEBSITE</h1>
+			<div id="contact_info">
+				<div class="contact_group">
+					<img class="footer_img" src="icons/footer_phone.png"> Contact nums
+					<p>+7 (778) 395 90 26</p>
+				</div>
+				<div class="contact_group">
+					<img class="footer_img" src="icons/footer_mail.png"> Post
+					<p>mail@mail.com</p>
+				</div>
+				<div class="contact_group">
+					<img class="footer_img" src="icons/footer_place.png"> Adress
+					<p>City city, street st. 90</p>
+				</div>
+				<div class="contact_group">
+					<img class="footer_img" src="icons/footer_doc.png"> Leave a request
+					<p>Leave a request</p>
+				</div>
+			</div>
 		</footer>
 	</body>
 </html>
