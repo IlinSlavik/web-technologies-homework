@@ -81,16 +81,50 @@ form
 {
     margin-top: 100px;
     border-radius: 20px;
-    box-shadow: 0 0 3px gray;
+    box-shadow: 0 0 7px 1px rgb(173, 173, 173);
     width: 800px;
+    padding: 30px;
+    font-size: 20pt;
+    font-weight: bold;
 }
 
 .form_group
 {
-    display: inline-block;
+    display: inline-flex;
+    font-size: 12pt;
+    flex-direction: column;
+    font-weight: normal;
+    margin-right: 100px;
+
+}
+
+label
+{
+    color: rgb(153, 155, 167);
+}
+
+input
+{
+    width: 200px;
+    border-top: none;
+    border-right: none;
+    border-left: none;
 }
 
 button
 {
-    
+    background-color: rgba(45,102,238);
+    color: white;
+    font-size: 14pt;
+    border: none;
+    border-radius: 10px;;
 }
+
+#consult_button
+{
+    text-align: left;
+    padding: 20px;
+    width: 150px;
+    display: inline-block;
+}
+
