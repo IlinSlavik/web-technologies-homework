@@ -4,6 +4,7 @@
     {
         background-color: rgba(243,244,248);
         font-family: sans-serif;
+        color: #101828;
     }
 
     #phone
@@ -147,6 +148,12 @@
         left: 348px;
         z-index: 1;
     }
+    
+    .footer_info
+    {
+        color: white;
+        font-size: 17px;
+    }
 
     .contact_group
     {
@@ -155,12 +162,6 @@
         text-align: left;
         color: #98A2B3;
         font-size: 14pt;
-    }
-
-    p
-    {
-        color: white;
-        font-size: 17pt;
     }
 
     .footer_img
@@ -190,6 +191,46 @@
     {
         width: 310.49px;
         box-shadow: 1px 0 3px 3px rgb(175, 175, 175);
+    }
+
+    #development_cycle
+    {
+        background: white;
+        width: 100%;
+        left: -110px;
+        padding-left: 110px;
+        top: 105px;
+        position: relative;
+        display: inline-block;
+    }
+
+    #development
+    {
+        display: grid;
+        li::after {
+            content: ">";
+            margin-left: 25px;
+            color: #2D66EE;
+        };
+    }
+
+    a
+    {
+        color:#101828;
+        text-decoration: none;
+    }
+
+    a:hover
+    {
+        font-weight: bold;
+        text-decoration: underline;
+        text-decoration-color: #2D66EE;
+        
+    }
+
+    p
+    {
+        font-size: 14pt;
     }
 }
 
