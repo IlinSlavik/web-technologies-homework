@@ -1,30 +1,32 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<link rel="stylesheet" href="css/descktop.css">
-		<link rel="stylesheet" href="css/mobile.css">
-		<link rel="stylesheet" href="css/mini-mobile.css">
+		<link rel="stylesheet" href="css/main.css">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 	</head>
 	<body>
 		<header>
-			<h2 class="blue_text" id="big_name">IT WEBSITE</h2>
-			<ul>
-				<li>Services</li>
-				<li>Media</li>
-				<li>Cases</li>
-				<li>FAQ</li>
-				<li>Contacts</li>
-			</ul>
-			<ul>
-				<li><img src="icons/header_phone.png" id="phone"></li>
-				<li class="blue_text">+7 (707) 254 81 47</li>
-				<li class="blue_text">+7 (778) 395 90 26</li>
-			</ul>
-			<ul>
-				<li><img src="icons/header_mail.png" id="mail"></li>
-				<li class="blue_text">thousanditcompany@gmail.com</li>
-			</ul>
+			<div class="descktop_menu">
+				<h2 class="blue_text" id="big_name">IT WEBSITE</h2>
+				<ul>
+					<li>Services</li>
+					<li>Media</li>
+					<li>Cases</li>
+					<li>FAQ</li>
+					<li>Contacts</li>
+				</ul>
+				<ul>
+					<li><img src="icons/header_phone.png" id="phone"></li>
+					<li class="blue_text">+7 (707) 254 81 47</li>
+					<li class="blue_text">+7 (778) 395 90 26</li>
+				</ul>
+				<ul>
+					<li><img src="icons/header_mail.png" id="mail"></li>
+					<li class="blue_text">thousanditcompany@gmail.com</li>
+				</ul>
+			</div>
+		</div>
+			</div>
 		</header>
 		<main>
 			<div class="main_big_text">
@@ -80,9 +82,85 @@
 				<img class="back_photo" src="images/5.jpg">
 				<img class="back_photo" src="images/6.jpg">
 			</div>
-			</div class="main_big_text">
-				Developed more than <span class="blue_text">100</span> projects in <span class="blue_text">15</span> industries
+			</div>
+				<span class="main_big_text">Developed more than <span class="blue_text">100</span><br> projects in <span class="blue_text">15</span> industries</span>
 			<div>
+			<div class="ul_inline">
+				<ul class="projects">
+					<li class="img_and_text"><img src="icons/1.png">Social media</li>
+					<li class="img_and_text"><img src="icons/2.png">Fitness and sport</li>
+					<li class="img_and_text"><img src="icons/3.png">Bank</li>
+					<li class="img_and_text"><img src="icons/4.png">Construction</li>
+					<li class="img_and_text"><img src="icons/5.png">Game projects</li>
+				</ul>
+				<ul class="projects">
+					<li class="img_and_text"><img src="icons/6.png">Education</li>
+					<li class="img_and_text"><img src="icons/7.png">Auto, transport</li>
+					<li class="img_and_text"><img src="icons/8.png">Medicine, health</li>
+					<li class="img_and_text"><img src="icons/9.png">Restaurants, food delivery</li>
+					<li class="img_and_text"><img src="icons/10.png">Marketplaces</li>
+				</ul>
+				<ul class="projects"> 
+					<li class="img_and_text"><img src="icons/11.png">AR technology</li>
+					<li class="img_and_text"><img src="icons/12.png">TV series</li>
+					<li class="img_and_text"><img src="icons/13.png">Startups</li>
+					<li class="img_and_text"><img src="icons/14.png">Religion</li>
+					<li class="img_and_text"><img src="icons/15.png">Online courses</li>
+				</ul>
+			</div>
+			<div>
+				<span class="main_big_text">Projects we are proud of</span><br>
+				<span class="small_text">Our software development company is truly proud of the wonderful clients we have<br>
+				worked with. We enjoy a long-term partnership</span>
+			</div>
+			<div>
+				<ul>
+					<li><a href="#">I-teka</a></li>
+					<li><a href="#">Dauletten</a></li>
+					<li><a href="#">Guru Borsch</a></li>
+					<li><a href="#">Santo</a></li>
+					<li><a href="#">Home Credit Bank</a></li>
+					<li><a href="#">Bl Partners</a></li>
+					<li><a href="#">Europharma</a></li>
+				</ul>
+				<button id="view_projects_btn">View 100 more projects</button>
+			</div>
+			<div>
+				<span class="main_big_text">I-teka</span>
+				<p class="small_text">The application is designed to search for drugs by availability in pharmacies in cities.<br> During quarantine, the application helped many people,<br>
+					which gives more value.</p>
+				<p class="lighter_color">Business analysis <span class="slash">/</span> iOS <span class="slash">/</span> Android <span class="slash">/</span> QA <span class="slash">/</span> UI/UX Design</p>
+				<p><img class="small_blue_img" src="icons/location_blue.png">Kazakhstan	<img class="small_blue_img" src="icons/backpack_blue.png"> Medicine</p>
+				<p><span class="bold_text">400%</span><span class="bold_text">+ 200 000</span></p>
+				<p><span class="small_text">User Growth</span><span class="small_text">Active Users</span></p>
+				<img class="stores" src="icons/ios.png"><img class="stores" src="icons/google-play.png">
+				<img id="iteka" src="images/i-teka.png">
+			</div>
+			<div class="blue_back">
+				<div class="white_text">
+					<span class="main_big_text">Let's discuss<br> Your project<br></span>
+					<span class="small_text">Let's figure out how to create an effective application,<br>its cost and terms of its development</span>
+				</div>
+				<form id="form_2">
+					<div class="form_group">
+						<label for="phone_form">Best phone number</label>
+						<input 
+							type="tel"
+							id="phone_form"
+							placeholder="+7 (111) 111-11-11"
+							pattern="+7 \(\d{3}\) \d{3}-\d{2}-\d{2}">
+					</div>
+					<div class="form_group">
+						<label for="full_name">Full name</label>
+						<input 
+							type="text"
+							id="full_name"
+							placeholder="Иванов Иван">
+					</div>
+					<br>
+					<button id="discuss_btn">Discuss the project</button>
+				</form>
+			</div>
 		</main>
 	</body>
 </html>
