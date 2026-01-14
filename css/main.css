@@ -1,0 +1,587 @@
+@media (min-width: 1024px)
+{
+    body
+    {
+        background-color: rgba(243,244,248);
+        font-family: sans-serif;
+        color: #101828;
+        overflow-x: hidden;
+    }
+
+    #phone
+    {
+        width: 18px;
+    }
+
+    #mail
+    {
+        height: 18px;
+    }
+
+    header
+    {
+        margin-left: 100px;
+        margin-top: 30px;
+        padding-bottom: 8px;
+        padding-left: 20px;
+        width: 85%;  
+        height: 60px; 
+        background-color: white;
+        border-radius: 12px;
+        box-shadow: 0 1px 4px rgb(218, 218, 218);
+        position: fixed;
+        display: inline-block;
+        align-items: center;
+        font-weight: bold;
+        z-index: 1;
+    }
+
+    h2
+    {
+        display: inline-block;
+    }
+
+    ul
+    {
+        margin-left: 10px;
+        list-style: none;
+        display: inline-block;
+    }
+
+    li
+    {
+        font-size: 14pt;
+        padding-left: 15px;
+        display: inline-block;
+        font-weight: 500;
+    }
+
+    .blue_text
+    {
+        color: #306FF5;
+    }
+
+    main
+    {
+        position:relative;
+        top: 200px;
+        left: 100px;
+        font-size: 36pt;
+    }
+
+    .main_big_text
+    {
+        position: relative;
+        width: 700px;
+        font-weight: bold;
+        p
+        {
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+    }
+
+    .main_small_text
+    {
+        padding-top: 30px;
+        width: 700px;
+        font-size: 14pt;
+    }
+
+    form
+    {
+        margin-top: 80px;
+        border-radius: 20px;
+        box-shadow: 0 0 7px 1px rgb(173, 173, 173);
+        width: 800px;
+        padding: 30px;
+        font-size: 20pt;
+        font-weight: bold;
+        background-color: white;
+    }
+
+    .form_group
+    {
+        display: inline-flex;
+        font-size: 12pt;
+        flex-direction: column;
+        font-weight: normal;
+        margin-right: 50px;
+    }
+
+    label
+    {
+        color: rgb(153, 155, 167);
+    }
+
+
+    input
+    {
+        width: 250px;
+        height: 30px;
+        font-size: 14pt;
+        border: solid 1px rgb(190, 190, 190);
+        border-top: none;
+        border-right: none;
+        border-left: none;
+    }
+
+    button
+    {
+        background-color: rgba(45,102,238);
+        color: white;
+        font-size: 14pt;
+        border: none;
+        border-radius: 10px;;
+    }
+
+    #consult_button
+    {
+        text-align: left;
+        padding: 20px;
+        width: 150px;
+        display: inline-block;
+    }
+
+    #background_photos
+    {
+        z-index: -1;
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+        overflow: hidden;
+        width: 700px;
+        height: 1100px;
+        top: -300px;
+        left: 900px;
+        padding-left: 20px;
+        position: absolute;
+        transform: rotate(-12deg);
+    }
+
+    .photo_column 
+    {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .photo_column::after 
+    {
+        content: "";
+        display: block;
+        height: 20px; 
+    }
+
+    .back_photo
+    {
+        width: 292.23px;
+        border-radius: 24px;
+    }
+
+    #big_back_photo
+    {
+        width: 310.49px;
+        box-shadow: 0 0 15px 5px rgb(175, 175, 175);
+        border-radius: 24px;
+    }
+
+    @keyframes scrollUp 
+    {
+        0% 
+        {
+            transform: translateY(0);
+        }
+        100% 
+        {
+            transform: translateY(-50%);
+        }
+    }
+
+    @keyframes scrollDown 
+    {
+        0% 
+        {
+            transform: translateY(-50%);
+        }
+        100% 
+        {
+            transform: translateY(0);
+        }
+    }
+
+    #left_column 
+    {
+        animation: scrollUp 30s linear infinite;
+    }
+
+    #right_column 
+    {
+        animation: scrollDown 30s linear infinite;
+    }
+
+    #development_cycle
+    {
+        background: white;
+        width: 100%;
+        left: -110px;
+        padding-left: 110px;
+        top: 105px;
+        position:relative;
+        height: 450px;
+        margin-bottom: 200px;
+    }
+
+    #full_cycle
+    {
+        position: relative;
+        top: 80px;
+        width: 600px;
+        height: 300px;
+    }
+
+    #development
+    {
+        position: relative;
+        width: 500px;
+        display: grid;
+        left: 700px;
+        top: -300px;
+        li
+        {
+            margin-top: 25px;
+        }
+        li::after {
+            content: ">";
+            margin-left: 25px;
+            color: #2D66EE;
+        };
+    }
+
+    a
+    {
+        color:#101828;
+        text-decoration: none;
+    }
+
+    a:hover
+    {
+        font-weight: bold;
+        text-decoration: underline;
+        text-decoration-color: #2D66EE;
+        
+    }
+
+    p
+    {
+        font-size: 14pt;
+    }
+
+    .slash
+    {
+        color: #2D66EE;
+    }
+
+    .bold_text
+    {
+        font-size: 20pt;
+        font-weight: bold;
+        margin-right: 40px;
+    }
+
+    h5
+    {
+        margin-bottom: 40px;
+    }
+
+    .small_text
+    {
+        font-size: 11pt;
+        margin-right: 30px;
+    }
+
+    .ul_inline 
+    {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px; 
+    align-items: flex-start; 
+    flex-wrap: wrap; 
+    width: 100%;
+    margin-top: 40px;
+    margin-bottom: 120px;
+    }
+
+    .projects 
+    {
+        display: flex;
+        flex-direction: column; 
+        list-style-type: none; 
+        padding: 0;
+        margin: 0;
+        flex: 1;
+        min-width: 200px; 
+    }
+
+    .img_and_text 
+    {
+        display: flex;
+        align-items: center; 
+        margin-bottom: 15px; 
+        padding: 10px;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+        font-size: 16pt;
+    }
+
+    #view_projects_btn
+    {
+        padding: 15px 30px;
+        margin-left: 300px;
+    }
+
+    .lighter_color
+    {
+        color: #475467;
+    }
+
+    .small_blue_img
+    {
+        margin-right: 15px;
+        margin-left: 40px;
+    }
+
+    .stores
+    {
+        width: 200px;
+        margin-right: 20px;
+    }
+
+    #iteka
+    {
+        position: relative;
+        float: right;
+        margin-right: 400px;
+        margin-top: -280px;
+    }
+
+    #discuss_btn
+    {
+        padding: 15px 25px;
+        margin-top: 30px;
+        margin-left: 360px;
+    }
+
+    #form_2
+    {
+        width: 620px;
+        margin-left: 700px;
+        margin-top: -200px;
+    }
+
+    .blue_back
+    {
+        margin-left: -110px;
+        padding-left: 110px;
+        background-color: #2D66EE;
+        background-image:url('../back/noise.png');
+        padding-top: 100px;
+        padding-bottom: 80px;
+    }
+
+    .white_text
+    {
+        color: white;
+    }
+
+    #application
+    {
+        padding-top: 100px;
+        background-color: white;
+        margin-left: -110px;
+        padding-left: 110px;
+        padding-bottom: 110px;
+    }
+
+    .application_block
+    {
+        margin-top: 50px;
+        padding: 30px;
+        width: 320px;
+        height: 160px;
+        border-radius: 20px;
+        line-height: 5px;
+        box-shadow: 0 0 20px -10px black;
+
+    }
+
+    .column
+    {
+        margin-left: 100px;
+    }
+
+    .application_columns
+    {
+        display: flex;
+        flex-direction: row;
+        gap: 500px;
+    }
+
+    #block_1
+    {
+        background: url('../icons/num1.png') no-repeat right;
+    }
+
+    #block_2
+    {
+        background: url('../icons/num2.png') no-repeat right;
+    }
+
+    #block_3
+    {
+        background: url('../icons/num3.png') no-repeat right;
+    }
+
+    #block_4
+    {
+        background: url('../icons/num4.png') no-repeat right;
+    }
+
+    #block_5
+    {
+        background: url('../icons/num5.png') no-repeat right;
+    }
+
+    #block_6
+    {
+        background: url('../icons/num6.png') no-repeat right;
+    }
+
+    #team
+    {
+        display: flex;
+        flex-direction: row;
+        padding-top: 100px;
+        padding-bottom: 100px;
+    }
+
+    #team_img
+    {
+        width: 800px;
+        margin-left: 150px;
+        box-shadow: 0 70px 50px -30px black;
+    }
+
+    #statistics
+    {
+        display: flex;
+        flex-direction: row;
+        margin-bottom: 50px;
+    }
+
+    .stat
+    {
+        line-height: 0;
+        margin-right: 60px;
+    }
+
+    #long_mail
+    {
+        display: inline-flex;
+        font-size: 12pt;
+        flex-direction: column;
+        font-weight: normal;
+        margin-right: 50px;
+        input
+        {
+            width: 560px;
+        }
+    }
+
+    #book_form
+    {
+        width: 620px;
+    }
+
+    #ebook_btn
+    {
+        margin-top: 50px;
+        margin-left: 300px;
+        padding: 15px 20px;
+    }
+
+    #book_img
+    {
+        margin-left: 200px;
+    }
+
+    #book
+    {
+        display: flex;
+        flex-direction: row;
+    }
+
+    #FAQ
+    {
+        padding-top: 100px;
+    }
+
+    #FAQ_columns
+    {
+        display: flex;
+        flex-direction: row;
+        margin-top: 100px;
+        gap: 100px;
+        margin-left: 100px;
+    }
+
+    .img_and_text_border
+    {
+        display: flex;
+        align-items: center; 
+        margin-bottom: 15px; 
+        padding: 30px;
+        transition: all 0.3s ease;
+        font-size: 16pt;
+        border-top: solid 1px rgb(187, 187, 187);
+        border-bottom: solid 1px rgb(187, 187, 187);
+        img
+        {
+            margin-left: 140px;
+        }
+    }
+
+    footer
+    {
+        width: 1024px;
+        height: 222px;
+        background-color: #101828;
+        color: #FFFFFF;
+        text-align: center;
+        border-radius: 20px;
+        bottom: 0;
+        left: 348px;
+        z-index: 1;
+        margin-left: 300px;
+    }
+
+    .contact_group
+    {
+        display: inline-block;
+        margin-right: 100px;
+        text-align: left;
+        color: #98A2B3;
+        font-size: 14pt;
+    }
+
+    .footer_info
+    {
+        color: white;
+        font-size: 17px;
+    }
+
+    .footer_img
+    {
+        width: 18px;
+    }
+}
