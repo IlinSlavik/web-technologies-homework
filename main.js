@@ -1,7 +1,7 @@
 function pickPropArray(array, property)
 {
     const result = [];
-    for (let obj in array)
+    for (let obj of array)
     {
         if (property in obj)
         {
@@ -46,16 +46,17 @@ function spinWords(str)
 
 function findIndexes(nums, target)
 {
-    for (let i = 0; i < nums.length - 1; i++)
+    for (let i = 0; i < nums.length; i++)
     {
         for (let j = i + 1; j < nums.length; j++)
         {
-            if (nums[i] + nums[j] == target)
+            if (nums[i] + nums[j] === target)
             {
                 return [i, j]
             }
         }
-        return [];
     }
+    return [];
 }
+
 
