@@ -59,4 +59,34 @@ function findIndexes(nums, target)
     return [];
 }
 
+function findPrefix(strs) 
+{
+    if (strs.length === 0) return "";
+    const firstWord = strs[0];
+    let result = "";
+    for (let start = 0; start < firstWord.length; start++) 
+    {
+        for (let end = start + 2; end <= firstWord.length; end++) 
+        {
+            const candidate = firstWord.substring(start, end);
+            let foundInAll = true;
+
+            for (let i = 1; i < strs.length; i++) 
+            {
+                if (!strs[i].includes(candidate)) 
+                {
+                    foundInAll = false;
+                    break;
+                }
+            }
+            if (foundInAll && candidate.length > result.length) 
+            {
+                result = candidate;
+            }
+        }
+    }
+
+    return result;
+}
+
 
