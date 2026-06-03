@@ -1,109 +1,116 @@
 <?php
-// 1. Объявление переменных $a и $b
-$a = 10;
-$b = -5;  
+echo "<b>=== Задание 1: Цикл do...while для вывода чисел от 0 до 10 ===</b><br><br>";
 
-echo "<b>=== Задание 1 ===</b><br>";
-echo "a = $a, b = $b<br>";
-
-if ($a >= 0 && $b >= 0) {
-    $result = $a - $b;
-    echo "Оба числа положительные <br>";
-    echo "Разность \$a - \$b = $result<br>";
-} elseif ($a < 0 && $b < 0) {
-    $result = $a * $b;
-    echo "Оба числа отрицательные<br>";
-    echo "Произведение \$a * \$b = $result<br>";
-} else {
-    $result = $a + $b;
-    echo "Числа разных знаков<br>";
-    echo "Сумма \$a + \$b = $result<br>";
-}
-
-echo "<br><b>=== Задание 2 ===</b><br>";
-// 2. Присвоить переменной $а значение в промежутке [0..15]
-$a = rand(0, 15);
-echo "Случайное значение \$a = $a<br>";
-echo "Вывод чисел от \$a до 15:<br>";
-
-switch (true) {
-    case ($a <= 15 && $a >= 0):
-        for ($i = $a; $i <= 15; $i++) {
-            echo $i . " ";
+function printNumbersWithType() {
+    $i = 0;
+    do {
+        if ($i == 0) {
+            echo "$i – это ноль.<br>";
+        } elseif ($i % 2 == 0) {
+            echo "$i – чётное число.<br>";
+        } else {
+            echo "$i – нечётное число.<br>";
         }
-        break;
-    default:
-        echo "Значение \$a выходит за пределы диапазона [0..15]";
-}
-echo "<br>";
-
-echo "<br><b>=== Задание 3 ===</b><br>";
-// 3. Арифметические операции в виде функций
-function add($x, $y) {
-    return $x + $y;
+        $i++;
+    } while ($i <= 10);
 }
 
-function subtract($x, $y) {
-    return $x - $y;
+printNumbersWithType();
+
+echo "<br><b>=== Задание 2: Массив областей и городов ===</b><br><br>";
+
+$regions = [
+    'Московская область' => ['Москва', 'Зеленоград', 'Клин', 'Подольск', 'Сергиев Посад'],
+    'Ленинградская область' => ['Санкт-Петербург', 'Всеволожск', 'Павловск', 'Кронштадт', 'Гатчина'],
+    'Рязанская область' => ['Рязань', 'Касимов', 'Скопин', 'Сасово', 'Ряжск'],
+    'Нижегородская область' => ['Нижний Новгород', 'Арзамас', 'Дзержинск', 'Бор', 'Кстово'],
+    'Свердловская область' => ['Екатеринбург', 'Нижний Тагил', 'Каменск-Уральский', 'Первоуральск']
+];
+
+foreach ($regions as $region => $cities) {
+    echo "<b>$region:</b><br>";
+    echo implode(', ', $cities) . ".<br><br>";
 }
 
-function multiply($x, $y) {
-    return $x * $y;
-}
+echo "<br><b>=== Задание 3: Транслитерация строк ===</b><br><br>";
 
-function divide($x, $y) {
-    if ($y == 0) {
-        return "Ошибка: деление на ноль!";
+$translitTable = [
+    'а' => 'a', 'б' => 'b', 'в' => 'v', 'г' => 'g', 'д' => 'd',
+    'е' => 'e', 'ё' => 'yo', 'ж' => 'zh', 'з' => 'z', 'и' => 'i',
+    'й' => 'y', 'к' => 'k', 'л' => 'l', 'м' => 'm', 'н' => 'n',
+    'о' => 'o', 'п' => 'p', 'р' => 'r', 'с' => 's', 'т' => 't',
+    'у' => 'u', 'ф' => 'f', 'х' => 'kh', 'ц' => 'ts', 'ч' => 'ch',
+    'ш' => 'sh', 'щ' => 'sch', 'ъ' => '', 'ы' => 'y', 'ь' => '',
+    'э' => 'e', 'ю' => 'yu', 'я' => 'ya',
+
+    'А' => 'A', 'Б' => 'B', 'В' => 'V', 'Г' => 'G', 'Д' => 'D',
+    'Е' => 'E', 'Ё' => 'Yo', 'Ж' => 'Zh', 'З' => 'Z', 'И' => 'I',
+    'Й' => 'Y', 'К' => 'K', 'Л' => 'L', 'М' => 'M', 'Н' => 'N',
+    'О' => 'O', 'П' => 'P', 'Р' => 'R', 'С' => 'S', 'Т' => 'T',
+    'У' => 'U', 'Ф' => 'F', 'Х' => 'Kh', 'Ц' => 'Ts', 'Ч' => 'Ch',
+    'Ш' => 'Sh', 'Щ' => 'Sch', 'Ъ' => '', 'Ы' => 'Y', 'Ь' => '',
+    'Э' => 'E', 'Ю' => 'Yu', 'Я' => 'Ya'
+];
+
+function transliterate($string, $table) {
+    $result = '';
+    $length = mb_strlen($string, 'UTF-8');
+    
+    for ($i = 0; $i < $length; $i++) {
+        $char = mb_substr($string, $i, 1, 'UTF-8');
+        if (isset($table[$char])) {
+            $result .= $table[$char];
+        } else {
+            $result .= $char;
+        }
     }
-    return $x / $y;
+    
+    return $result;
 }
 
-$num1 = 20;
-$num2 = 5;
-echo "Число 1: $num1, Число 2: $num2<br>";
-echo "Сложение: " . add($num1, $num2) . "<br>";
-echo "Вычитание: " . subtract($num1, $num2) . "<br>";
-echo "Умножение: " . multiply($num1, $num2) . "<br>";
-echo "Деление: " . divide($num1, $num2) . "<br>";
+$testStrings = [
+    'Привет мир!',
+    'Кошка и собака',
+    'Я люблю PHP'
+];
 
-echo "<br><b>=== Задание 4 ===</b><br>";
-// 4. Функция mathOperation
-function mathOperation($arg1, $arg2, $operation) {
-    switch ($operation) {
-        case 'сложение':
-        case 'add':
-        case '+':
-            return add($arg1, $arg2);
-        case 'вычитание':
-        case 'subtract':
-        case '-':
-            return subtract($arg1, $arg2);
-        case 'умножение':
-        case 'multiply':
-        case '*':
-            return multiply($arg1, $arg2);
-        case 'деление':
-        case 'divide':
-        case '/':
-            return divide($arg1, $arg2);
-        default:
-            return "Ошибка: неизвестная операция '$operation'";
-    }
+foreach ($testStrings as $test) {
+    echo "Исходная строка: $test<br>";
+    echo "Транслитерация: " . transliterate($test, $translitTable) . "<br><br>";
 }
 
-$x = 15;
-$y = 3;
-echo "Результаты вычислений для \$x = $x, \$y = $y:<br>";
-echo "Сложение: " . mathOperation($x, $y, 'сложение') . "<br>";
-echo "Вычитание: " . mathOperation($x, $y, 'вычитание') . "<br>";
-echo "Умножение: " . mathOperation($x, $y, 'умножение') . "<br>";
-echo "Деление: " . mathOperation($x, $y, 'деление') . "<br>";
+echo "<br><b>=== Задание 4: Динамическое меню с вложенными подменю ===</b><br><br>";
 
-echo "<br><b>Дополнительные примеры:</b><br>";
-echo "15 + 7 = " . mathOperation(15, 7, '+') . "<br>";
-echo "20 - 8 = " . mathOperation(20, 8, '-') . "<br>";
-echo "6 * 4 = " . mathOperation(6, 4, '*') . "<br>";
-echo "30 / 5 = " . mathOperation(30, 5, '/') . "<br>";
-echo "10 / 0 = " . mathOperation(10, 0, '/') . "<br>";
-echo "Неизвестная операция: " . mathOperation(5, 3, '%') . "<br>";
+$menuItems = ['Главная', 'О нас', 'Услуги', 'Новости', 'Контакты'];
+
+echo "<ul>";
+foreach ($menuItems as $item) {
+    echo "<li><a href='#'>$item</a></li>";
+}
+echo "</ul>";
 ?>
+
+
+<style>
+    ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        background: #333;
+        overflow: hidden;
+        display: inline-block;
+    }
+    li {
+        float: left;
+    }
+    li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+    }
+    li a:hover {
+        background: #111;
+    }
+</style>
