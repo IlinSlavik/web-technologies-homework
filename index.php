@@ -1,131 +1,77 @@
 <?php
-$galleryDir = 'gallery';
-$thumbDir = 'gallery/thumbs';
+$host = 'MySQL-8.0';
+$dbname = 'menu_db';
+$username = 'root';
+$password = '';
 
-if (!file_exists($galleryDir)) {
-    mkdir($galleryDir, 0777, true);
-}
-if (!file_exists($thumbDir)) {
-    mkdir($thumbDir, 0777, true);
+try {
+    $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch(PDOException $e) {
+    die("Ошибка подключения: " . $e->getMessage());
 }
 
-function createThumbnail($sourcePath, $targetPath, $thumbWidth = 200) {
-    list($width, $height, $type) = getimagesize($sourcePath);
-    $thumbHeight = ($height / $width) * $thumbWidth;
-    $thumb = imagecreatetruecolor($thumbWidth, $thumbHeight);
+function getMenuItems($pdo, $parent_id = NULL) {
+    $sql = "SELECT * FROM menu_items WHERE parent_id " . ($parent_id === NULL ? "IS NULL" : "= :parent_id") . " ORDER BY sort_order";
+    $stmt = $pdo->prepare($sql);
     
-    switch ($type) {
-        case IMAGETYPE_JPEG:
-            $source = imagecreatefromjpeg($sourcePath);
-            imagecopyresampled($thumb, $source, 0, 0, 0, 0, $thumbWidth, $thumbHeight, $width, $height);
-            imagejpeg($thumb, $targetPath, 80);
-            break;
-        case IMAGETYPE_PNG:
-            $source = imagecreatefrompng($sourcePath);
-            imagecopyresampled($thumb, $source, 0, 0, 0, 0, $thumbWidth, $thumbHeight, $width, $height);
-            imagepng($thumb, $targetPath, 8);
-            break;
-        case IMAGETYPE_GIF:
-            $source = imagecreatefromgif($sourcePath);
-            imagecopyresampled($thumb, $source, 0, 0, 0, 0, $thumbWidth, $thumbHeight, $width, $height);
-            imagegif($thumb, $targetPath);
-            break;
-        default:
-            return false;
+    if ($parent_id !== NULL) {
+        $stmt->bindParam(':parent_id', $parent_id);
     }
     
-    imagedestroy($source);
-    imagedestroy($thumb);
-    return true;
+    $stmt->execute();
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 
-function buildGallery($galleryDir, $thumbDir) {
-    $files = scandir($galleryDir);
-    $images = [];
+function renderMenu($pdo, $parent_id = NULL, $level = 0) {
+    $items = getMenuItems($pdo, $parent_id);
+    $html = '';
     
-    foreach ($files as $file) {
-        $filePath = $galleryDir . '/' . $file;
-        if (is_file($filePath)) {
-            $extension = strtolower(pathinfo($file, PATHINFO_EXTENSION));
-            if (in_array($extension, ['jpg', 'jpeg', 'png', 'gif'])) {
-                $images[] = $file;
-            }
-        }
+    if ($level === 0) {
+        $html .= '<div class="menu-container" id="menuContainer">';
     }
     
-    if (count($images) > 0) {
-        echo "<div class='gallery'>";
-        foreach ($images as $image) {
-            $thumbPath = $thumbDir . '/' . $image;
-            $fullPath = $galleryDir . '/' . $image;
-            
-            if (!file_exists($thumbPath)) {
-                createThumbnail($fullPath, $thumbPath);
-            }
-            
-            echo "<div class='gallery-item'>";
-            echo "<a href='$fullPath' target='_blank'>";
-            echo "<img src='$thumbPath' alt='$image' class='thumbnail'>";
-            echo "</a>";
-            echo "</div>";
-        }
-        echo "</div>";
-    } else {
-        echo "<div class='empty'><p>📷 В галерее пока нет изображений.<br>Загрузите первое изображение!</p></div>";
-    }
-}
-
-$uploadMessage = '';
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['image'])) {
-    $file = $_FILES['image'];
-    $fileName = basename($file['name']);
-    $fileTmp = $file['tmp_name'];
-    $fileSize = $file['size'];
-    $fileError = $file['error'];
-    
-    if ($fileError === UPLOAD_ERR_OK) {
-        $extension = strtolower(pathinfo($fileName, PATHINFO_EXTENSION));
-        $allowedExtensions = ['jpg', 'jpeg', 'png', 'gif'];
+    foreach ($items as $item) {
+        $hasChildren = hasChildren($pdo, $item['id']);
+        $itemId = 'menu-item-' . $item['id'];
         
-        if (in_array($extension, $allowedExtensions)) {
-            $maxFileSize = 5 * 1024 * 1024;
-            if ($fileSize <= $maxFileSize) {
-                $newFileName = time() . '_' . uniqid() . '.' . $extension;
-                $destination = $galleryDir . '/' . $newFileName;
-                
-                if (move_uploaded_file($fileTmp, $destination)) {
-                    $thumbDestination = $thumbDir . '/' . $newFileName;
-                    if (createThumbnail($destination, $thumbDestination)) {
-                        $uploadMessage = "<div class='success'>✅ Файл успешно загружен!</div>";
-                        header("Refresh:0");
-                        exit();
-                    } else {
-                        $uploadMessage = "<div class='error'>❌ Ошибка при создании миниатюры</div>";
-                    }
-                } else {
-                    $uploadMessage = "<div class='error'>❌ Ошибка при перемещении файла</div>";
-                }
-            } else {
-                $uploadMessage = "<div class='error'>❌ Файл слишком большой. Максимальный размер 5MB</div>";
-            }
+        $html .= '<div class="menu-item" data-id="' . $item['id'] . '">';
+        $html .= '<div class="menu-header ' . ($hasChildren ? 'has-children' : '') . '">';
+        
+        if ($hasChildren) {
+            $html .= '<div class="toggle"></div>';
         } else {
-            $uploadMessage = "<div class='error'>❌ Разрешены только изображения (JPG, PNG, GIF)</div>";
+            $html .= '<div class="toggle-placeholder"></div>';
         }
-    } else {
-        $uploadMessage = "<div class='error'>❌ Ошибка при загрузке файла</div>";
+        
+        $html .= '<span class="item-label">' . htmlspecialchars($item['label']) . '</span>';
+        $html .= '</div>';
+        
+        if ($hasChildren) {
+            $html .= '<div class="menu-content">';
+            $html .= renderMenu($pdo, $item['id'], $level + 1);
+            $html .= '</div>';
+        }
+        
+        $html .= '</div>';
     }
+    
+    if ($level === 0) {
+        $html .= '</div>';
+    }
+    
+    return $html;
 }
 
-$files = scandir($galleryDir);
-$imageCount = 0;
-foreach ($files as $file) {
-    if (is_file($galleryDir . '/' . $file)) {
-        $ext = strtolower(pathinfo($file, PATHINFO_EXTENSION));
-        if (in_array($ext, ['jpg', 'jpeg', 'png', 'gif'])) {
-            $imageCount++;
-        }
-    }
+function hasChildren($pdo, $parent_id) {
+    $sql = "SELECT COUNT(*) FROM menu_items WHERE parent_id = :parent_id";
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindParam(':parent_id', $parent_id);
+    $stmt->execute();
+    return $stmt->fetchColumn() > 0;
 }
+
+$menuHTML = renderMenu($pdo);
 ?>
 
 <!DOCTYPE html>
@@ -133,38 +79,11 @@ foreach ($files as $file) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Фотогалерея</title>
+    <title>Каталог товаров - Древовидное меню</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <h1>📸 Фотогалерея</h1>
-        
-        <!-- Форма загрузки изображения -->
-        <div class="upload-form">
-            <h2>📤 Загрузить новое изображение</h2>
-            <?php echo $uploadMessage; ?>
-            <form method="POST" enctype="multipart/form-data">
-                <div class="file-input">
-                    <label for="image">📁 Выберите файл</label>
-                    <input type="file" name="image" id="image" accept="image/jpeg, image/png, image/gif" required>
-                    <span class="file-name" id="fileName">Файл не выбран</span>
-                </div>
-                <button type="submit" class="submit-btn">📤 Загрузить</button>
-            </form>
-            <div class="info-text">
-                <small>✅ Разрешены файлы: JPG, PNG, GIF | 📦 Максимальный размер: 5MB</small>
-            </div>
-        </div>
-        
-        <h2>🖼️ Галерея изображений</h2>
-        <?php buildGallery($galleryDir, $thumbDir); ?>
-        
-        <div class="stats">
-            📊 Всего изображений: <?php echo $imageCount; ?>
-        </div>
-    </div>
-    
+    <?php echo $menuHTML; ?>
     <script src="script.js"></script>
 </body>
 </html>
