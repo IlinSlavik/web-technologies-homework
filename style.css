@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     max-width: 600px;
@@ -149,3 +150,222 @@ h2 {
     background-color: #ccc;
     cursor: not-allowed;
 }
+=======
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    background: #f4f7fc;
+    font-family: system-ui, 'Segoe UI', 'Roboto', sans-serif;
+    padding: 2rem 1rem;
+    color: #1e2a3e;
+}
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+/* навигация */
+.nav-bar {
+    background: white;
+    border-radius: 2rem;
+    padding: 0.75rem 1.5rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    border: 1px solid #e2edf2;
+}
+.nav-link {
+    text-decoration: none;
+    font-weight: 600;
+    color: #2c6e9e;
+    background: #eef2f8;
+    padding: 0.4rem 1rem;
+    border-radius: 2rem;
+    transition: 0.2s;
+}
+.nav-link:hover {
+    background: #dce5ef;
+    color: #0f4c6b;
+}
+h1 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.3px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.posts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.5rem;
+}
+.post-card {
+    background: white;
+    border-radius: 1.5rem;
+    padding: 1.4rem 1.5rem;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.02), 0 1px 3px rgba(0,0,0,0.05);
+    transition: transform 0.1s ease, box-shadow 0.2s;
+    border: 1px solid #e9f0f3;
+    display: flex;
+    flex-direction: column;
+}
+.post-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 20px 25px -12px rgba(0,0,0,0.1);
+    border-color: #cbdbe6;
+}
+.post-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    line-height: 1.3;
+    color: #0c4e6e;
+}
+.post-body {
+    color: #2c3f4f;
+    line-height: 1.45;
+    margin-bottom: 1.2rem;
+    flex-grow: 1;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+.post-meta {
+    font-size: 0.75rem;
+    color: #6c8ba0;
+    margin-bottom: 1rem;
+    border-top: 1px dashed #e2edf2;
+    padding-top: 0.7rem;
+}
+.detail-link {
+    background: #eef2fa;
+    text-align: center;
+    padding: 0.5rem;
+    border-radius: 2rem;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: #1e6f9f;
+    transition: 0.2s;
+    display: inline-block;
+    width: fit-content;
+}
+.detail-link:hover {
+    background: #dce5f0;
+    color: #0b4b6b;
+}
+.error-banner {
+    background: #ffe6e5;
+    border-left: 6px solid #d1453b;
+    padding: 1rem 1.5rem;
+    border-radius: 1rem;
+    margin-bottom: 1.5rem;
+    color: #9b2c1d;
+    font-weight: 500;
+}
+.loading {
+    background: white;
+    padding: 2rem;
+    border-radius: 2rem;
+    text-align: center;
+    color: #2c6e9e;
+    font-weight: 500;
+}
+/* детальная страница */
+.detail-card {
+    background: white;
+    border-radius: 1.8rem;
+    padding: 2rem;
+    box-shadow: 0 12px 28px rgba(0,0,0,0.05);
+    margin-bottom: 2rem;
+}
+.back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: none;
+    border: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #2a6d8f;
+    cursor: pointer;
+    margin-bottom: 1.5rem;
+    padding: 0.3rem 0.8rem;
+    border-radius: 2rem;
+    background: #ecf3f8;
+}
+.post-full-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin: 0.5rem 0 1rem 0;
+    color: #0c4e6e;
+}
+.post-full-body {
+    font-size: 1rem;
+    line-height: 1.5;
+    margin: 1rem 0 1.8rem;
+    background: #fafdff;
+    padding: 1rem 1.2rem;
+    border-radius: 1.2rem;
+    border: 1px solid #e9f0f3;
+}
+.comments-section {
+    margin-top: 1rem;
+}
+.comments-title {
+    font-size: 1.6rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.comment {
+    background: #ffffffea;
+    border-radius: 1.2rem;
+    padding: 1rem 1.4rem;
+    margin-bottom: 1rem;
+    border: 1px solid #e2edf6;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.02);
+}
+.comment-email {
+    font-weight: 600;
+    color: #1a6c93;
+    word-break: break-all;
+}
+.comment-name {
+    font-weight: 700;
+    margin: 5px 0 6px;
+    font-size: 1rem;
+}
+.comment-body {
+    color: #2c3f4f;
+    line-height: 1.4;
+    margin-top: 5px;
+    font-size: 0.9rem;
+}
+hr {
+    margin: 1rem 0;
+    border: none;
+    border-top: 2px dotted #d4e2ec;
+}
+footer {
+    margin-top: 3rem;
+    text-align: center;
+    font-size: 0.8rem;
+    color: #6c8ba0;
+}
+@media (max-width: 640px) {
+    body { padding: 1rem; }
+    .post-full-title { font-size: 1.4rem; }
+}
+>>>>>>> Stashed changes
